@@ -268,8 +268,8 @@ class Measurements(object):
             is_temporary = True
             import traceback
             logger.debug("Created temporary file %s" % filename)
-            for frame in traceback.extract_stack():
-                logger.debug("%s: (%d %s): %s" % frame)
+            # for frame in traceback.extract_stack():
+            #     logger.debug("%s: (%d %s): %s" % frame)
         else:
             is_temporary = False
         if isinstance(copy, Measurements):
