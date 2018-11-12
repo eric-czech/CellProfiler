@@ -11,6 +11,7 @@ import re
 import sys
 import os.path
 import glob
+import six
 import cellprofiler.module as cpm
 from cellprofiler.modules.plugins import plugin_list
 from cellprofiler.preferences import get_plugin_directory
@@ -307,7 +308,7 @@ def find_cpmodule(m):
 
     returns the CPModule class
     '''
-    for v, val in m.__dict__.iteritems():
+    for v, val in six.iteritems(m.__dict__):
         if isinstance(val, type) and issubclass(val, cpm.Module):
             return val
     raise ValueError("Could not find cellprofiler.module.Module class in %s" % m.__file__)
