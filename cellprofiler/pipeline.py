@@ -1024,7 +1024,7 @@ class Pipeline(object):
                 #
                 # Set up the module
                 #
-                module_name = module_name.decode('string_escape')
+                module_name = six.u(module_name)
                 module = self.instantiate_module(module_name)
                 module.module_num = module_number
                 #
