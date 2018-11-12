@@ -873,9 +873,11 @@ class Pipeline(object):
         def rl():
             '''Read a line from fd'''
             try:
-                line = next(fd)
+                line = six.next(fd)
                 if line is None:
                     return None
+                if not isinstance(line, six.string_types):
+                    line = line.decode("utf-8")
                 line = line.strip("\r\n")
                 return line
             except StopIteration:
