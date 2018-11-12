@@ -750,6 +750,8 @@ class Pipeline(object):
     def is_pipeline_txt_fd(fd):
         header = fd.read(1024)
         fd.seek(0)
+        if not isinstance(header, six.string_types):
+            header = header.decode("utf-8")
         if header.startswith(COOKIE):
             return True
         if re.search(SAD_PROOFPOINT_COOKIE, header):
